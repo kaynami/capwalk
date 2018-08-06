@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Yajra\DataTables\Utilities\Request;
 
 class HomeController extends Controller
 {
@@ -29,7 +28,7 @@ class HomeController extends Controller
         ->orderBy('created_at', 'desc')
         ->paginate(8);
 
-        
+
         return view('home', compact('posts'));
     }
 
