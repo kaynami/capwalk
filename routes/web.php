@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('homepage');
 Route::get('about', 'HomeController@about')->name('homepage.about');
 Route::get('contact', 'HomeController@contact')->name('homepage.contact');
+Route::get('post/{id}', 'HomeController@post')->name('homepage.post');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -44,12 +45,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('table', 'CategoryController@table')->name('category.table');
         Route::get('/', 'CategoryController@index')->name('category');
     });
-    
+
     Route::group(['prefix' => 'aboutme'], function () {
         Route::post('save', 'AboutMeController@store')->name('aboutme.save');
         Route::get('/', 'AboutMeController@index')->name('aboutme');
     });
-    
+
     Route::group(['prefix' => 'media'], function () {
         Route::get('delete/{id}', 'MediaController@destroy')->name('media.delete');
         Route::post('upload', 'MediaController@upload')->name('media.upload');

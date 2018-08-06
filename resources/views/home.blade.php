@@ -15,14 +15,14 @@
                 </div>
             </div>
         </header>
-        
+
             <!-- Main Content -->
             <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                 @foreach($posts as $item)
                     <div class="post-preview">
-                        <a href="post.html">
+                        <a href="{{ route('homepage.post', $item->id) }}">
                         <h2 class="post-title">
                             {{ $item->title }}
                         </h2>
@@ -40,7 +40,7 @@
                 <div class="clearfix">
                     @if($posts->firstItem() != 1)
                         <a class="btn btn-primary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Newer Posts </a>
-                    @endif 
+                    @endif
                     @if($posts->lastPage() != $posts->currentPage())
                         <a class="btn btn-primary float-right" href="{{ $posts->nextPageUrl() }}">Older Posts &rarr;</a>
                     @endif

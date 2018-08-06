@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -42,8 +43,15 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function post(Request $request)
+    public function post($id)
     {
-        return view('post');
+        $post = DB::table('posts')
+        ->select('posts.*', 'users.name as name')
+        ->where('status', 1)
+        ->where('posts.id', $id)
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->get()[0];
+
+        return view('post', compact('post'));
     }
 }
