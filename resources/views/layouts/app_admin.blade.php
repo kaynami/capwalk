@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Singkong Butas - @yield('title')</title>
-    
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link href="{{ asset('lumino/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('lumino/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ asset('lumino/css/styles.css') }}" rel="stylesheet">
-	
+
     <!--Custom Font-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -19,6 +19,13 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4525260285402261",
+        enable_page_level_ads: true
+    });
+    </script>
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -33,7 +40,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@yield('content')
-	
+
 	<script src="{{ asset('lumino/js/jquery-1.11.1.min.js') }}"></script>
 	<script src="{{ asset('lumino/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('lumino/js/chart.min.js') }}"></script>
