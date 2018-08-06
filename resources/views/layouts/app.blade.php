@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="{{ asset('icon/icon.png') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">SingkongButas</a>
+            <a class="navbar-brand" href="index.html"><img style="width: 35px;" src="{{ asset('icon/icon.png') }}"> SingkongButas</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
@@ -61,11 +61,11 @@
             </div>
         </div>
         </nav>
-    
+
         @yield('content')
-    
+
         <hr>
-    
+
         <!-- Footer -->
         <footer>
         <div class="container">
@@ -102,10 +102,10 @@
             </div>
         </div>
         </footer>
-    
+
         <!-- Bootstrap core JavaScript -->
         <script src="/js/app.js"></script>
-    
+
         <!-- Custom scripts for this template -->
         <script src="/cleanblog/js/clean-blog.min.js"></script>
 </body>
