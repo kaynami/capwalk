@@ -1,10 +1,12 @@
 /public/hot
+/public/index.php
 /public/storage/medias
 /storage/*.key
 /.idea
 /.vscode
 /.vagrant
 /vendor
+server.php
 Homestead.json
 Homestead.yaml
 npm-debug.log
