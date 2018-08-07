@@ -22,7 +22,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                 @foreach($posts as $item)
                     <div class="post-preview">
-                        <a href="{{ route('homepage.post', $item->id) }}">
+                        <a href="{{ route('homepage.post', [$item->type, $item->pointer]) }}">
                         <h2 class="post-title">
                             {{ $item->title }}
                         </h2>
@@ -38,7 +38,10 @@
                 @endforeach
                 <!-- Pager -->
                 <div class="clearfix">
-                    @if($posts->firstItem() != 1)
+                    @if($posts->firstItem() == '') 
+                        <label> Sorry, No post yet. :( </label>
+                    @endif
+                    @if($posts->firstItem() != 1 && $posts->firstItem() != '')
                         <a class="btn btn-primary float-left" href="{{ $posts->previousPageUrl() }}">&larr; Newer Posts </a>
                     @endif
                     @if($posts->lastPage() != $posts->currentPage())

@@ -51,7 +51,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
                     <div class="dropdown-menu">
                         @foreach(\App\Category::all() as $item)
-                            <a class="dropdown-item" href="{{ route('homepage', ['cat' => $item->id ]) }}">{{ $item->type }}</a>
+                            <a class="dropdown-item" href="{{ route('homepage.filter', $item->type) }}">{{ $item->type }}</a>
                         @endforeach
                     </div>
                 </li>
