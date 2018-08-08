@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('storage/cover.jpg')">
+    <header class="masthead" style="background-image: url('storage/silhouette.jpg')">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -15,7 +15,7 @@
           </div>
         </div>
       </header>
-  
+
       <!-- Main Content -->
       <div class="container">
         <div class="row">
@@ -62,5 +62,5 @@
           </div>
         </div>
       </div>
-  
+
 @endsection

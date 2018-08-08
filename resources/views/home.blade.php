@@ -2,7 +2,7 @@
 
 @section('content')
         <!-- Page Header -->
-        <header class="masthead" style="background-image: url('storage/cover.jpg')">
+        <header class="masthead" style="background-image: url('storage/silhouette.jpg')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -38,7 +38,7 @@
                 @endforeach
                 <!-- Pager -->
                 <div class="clearfix">
-                    @if($posts->firstItem() == '') 
+                    @if($posts->firstItem() == '')
                         <label> Sorry, No post yet. :( </label>
                     @endif
                     @if($posts->firstItem() != 1 && $posts->firstItem() != '')
