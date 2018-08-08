@@ -98,13 +98,14 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $title = $request->get('title');
-        $post = new Post;
+        $post = Post::find($id);
         $post->title = $title;
         $post->content = $request->get('editor');
         $post->status = $request->get('status');
         $post->category_id = $request->get('category');
         $post->subtitle = $request->get('subtitle');
         $post->image_link = $request->get('image_link');
+        $post->user_id = auth()->user()->id;
         $post->pointer = str_replace(' ', '-', strtolower($title));
         $post->save();
 
