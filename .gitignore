@@ -6,6 +6,7 @@
 /.vscode
 /.vagrant
 /vendor
+/node_modules
 server.php
 Homestead.json
 Homestead.yaml

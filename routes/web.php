@@ -12,9 +12,10 @@
 */
 
 Route::get('/', 'HomeController@index')->name('homepage');
-Route::get('about', 'HomeController@about')->name('homepage.about');
-Route::get('contact', 'HomeController@contact')->name('homepage.contact');
-Route::get('post/{id}', 'HomeController@post')->name('homepage.post');
+Route::get('singkong-butas-about', 'HomeController@about')->name('homepage.about');
+Route::get('singkong-butas-contact', 'HomeController@contact')->name('homepage.contact');
+Route::get('singkong-butas-{category}/{pointer}', 'HomeController@post')->name('homepage.post');
+Route::get('singkong-butas-{category}', 'HomeController@filter')->name('homepage.filter');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

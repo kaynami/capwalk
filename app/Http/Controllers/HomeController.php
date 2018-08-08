@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $posts = DB::table('posts')
-        ->select('posts.*', 'users.name as name')
+        ->select('posts.*', 'users.name as name', 'categories.type')
         ->where('status', 1);
 
         if ($request->get('cat')) {
@@ -25,7 +25,9 @@ class HomeController extends Controller
         if ($request->get('keyword')) {
             $posts = $posts->whereRaw('UPPER( posts.title ) LIKE \'%'.strtoupper($request->get('keyword').'%\''));
         }
+
         $posts = $posts->join('users', 'users.id', '=', 'posts.user_id')
+        ->join('categories', 'categories.id', '=', 'posts.category_id')
         ->orderBy('created_at', 'desc')
         ->paginate(8);
 
@@ -43,15 +45,32 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function post($id)
+    public function post($category, $pointer)
     {
         $post = DB::table('posts')
         ->select('posts.*', 'users.name as name')
-        ->where('status', 1)
-        ->where('posts.id', $id)
+        ->join('categories', 'categories.id', '=', 'posts.category_id')
         ->join('users', 'users.id', '=', 'posts.user_id')
+        ->where('status', 1)
+        ->where('posts.pointer', 'LIKE', $pointer)
+        ->where('categories.type', 'LIKE', $category)
         ->get()[0];
 
         return view('post', compact('post'));
+    }
+
+    public function filter($category)
+    {
+        $posts = DB::table('posts')
+        ->select('posts.*', 'users.name as name', 'categories.type')
+        ->where('status', 1)
+        ->where('categories.type', 'LIKE', $category)
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->join('categories', 'categories.id', '=', 'posts.category_id')
+        ->orderBy('created_at', 'desc')
+        ->paginate(8);
+
+
+        return view('home', compact('posts'));
     }
 }
