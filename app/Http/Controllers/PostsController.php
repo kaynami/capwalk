@@ -49,8 +49,9 @@ class PostsController extends Controller
      */
     public function store(FormPostRequest $request)
     {
+        $title = $request->get('title');
         $post = new Post;
-        $post->title = $request->get('title');
+        $post->title = $title;
         $post->content = $request->get('editor');
         $post->status = $request->get('status');
         $post->category_id = $request->get('category');
@@ -96,8 +97,9 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
-        $post->title = $request->get('title');
+        $title = $request->get('title');
+        $post = new Post;
+        $post->title = $title;
         $post->content = $request->get('editor');
         $post->status = $request->get('status');
         $post->category_id = $request->get('category');
