@@ -19,13 +19,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('cleanblog/css/clean-blog.min.css') }}" rel="stylesheet">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-4525260285402261",
-        enable_page_level_ads: true
-    });
-    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -116,5 +109,6 @@
 
         <!-- Custom scripts for this template -->
         <script src="/cleanblog/js/clean-blog.min.js"></script>
+        <script type="text/javascript"> var infolinks_pid = 3123910; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
 </body>
 </html>
