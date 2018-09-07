@@ -15,13 +15,13 @@
 				<li class="active">Media</li>
 			</ol>
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Media</h1>
 			</div>
 		</div><!--/.row-->
-		
+
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
@@ -29,7 +29,7 @@
                         <form action="{{ route('media.upload') }}" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                                 @csrf
-                                <input name="media" type="file" class="form-control input-md">
+                                <input name="media[]" type="file" class="form-control input-md" multiple>
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary btn-md"> Upload</button>
                                 </span>

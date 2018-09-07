@@ -21,21 +21,19 @@ class MediaController extends Controller
 
     public function upload(Request $request)
     {
-        $file = $request->file('media');
-        $originalName = $file->getClientOriginalName();
-        $size = $file->getSize();
-        $type = $file->getClientMimeType();
+        foreach($request->file('media') as $file) {
+            $upload = $file->storeAs('medias', $file->getClientOriginalName());
+            Media::query()->where('path', $upload)->delete();
+            $type = $file->getClientMimeType();
 
-        $upload = $request->file('media')->storeAs('medias', $originalName);
+            $media = new Media;
+            $media->path = $upload;
+            $media->type = $type;
+            $media->format = $type;
+            $media->size = $file->getSize();
+            $media->save();
+        }
 
-        Media::query()->where('path', $upload)->delete();
-
-        $media = new Media;
-        $media->path = $upload;
-        $media->type = $type;
-        $media->format = $type;
-        $media->size = $size;
-        $media->save();
 
         return redirect('/admin/media');
     }
