@@ -6,6 +6,7 @@
 <meta property="og:title"              content="{{ $post->title }}" />
 <meta property="og:description"        content="{{ $post->subtitle }}" />
 <meta property="og:image"              content="{{ $post->image_link }}" />
+<meta property="og:image:width"        content="100%" />
 @endsection
 
 @section('content')
