@@ -2,11 +2,13 @@
 
 @section('meta')
 <!--<meta property="og:url"                content="" />-->
-<meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ $post->title }}" />
-<meta property="og:description"        content="{{ $post->subtitle }}" />
-<meta property="og:image"              content="{{ url($post->image_link) }}" />
-<meta property="og:image:width"        content="100%" />
+<meta property="fb:app_id"          content="282629801766929">
+<meta property="og:type"           content="article" />
+<meta property="og:title"          content="{{ $post->title }}">
+<meta property="og:description"    content="{{ $post->subtitle }}">
+<meta property="og:image"          content="{{ url($post->image_link) }}">
+<meta property="og:image:width"    content="953">
+<meta property="og:image:height"   content="960">
 @endsection
 
 @section('content')
