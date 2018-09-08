@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta')
-<!--<meta property="og:url"                content="{{ url(\Request::route()) }}" />-->
+<!--<meta property="og:url"                content="" />-->
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ $post->title }}" />
 <meta property="og:description"        content="{{ $post->subtitle }}" />
