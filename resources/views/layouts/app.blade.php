@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('icon/icon.png') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @yield('meta')
     <title>SingkongButas</title>
 
     <!-- Fonts -->

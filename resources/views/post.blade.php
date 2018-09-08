@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('meta')
+ <!--<meta property="og:url"                content="" />-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ $post->title }}" />
+<meta property="og:description"        content="{{ $post->subtitle }}" />
+<meta property="og:image"              content="{{ $post->image_link }}" />
+@endsection
+
 @section('content')
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('{{ $post->image_link }}')">
