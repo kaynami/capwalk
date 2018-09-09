@@ -15,23 +15,25 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $media = \App\Media::paginate(10);
+        $media = \App\Media::orderBy('id', 'desc')->paginate(12);
         return view('admin.media', compact('media'));
     }
 
     public function upload(Request $request)
     {
-        foreach($request->file('media') as $file) {
-            $upload = $file->storeAs('medias', $file->getClientOriginalName());
-            Media::query()->where('path', $upload)->delete();
-            $type = $file->getClientMimeType();
+        if($request->file('media')) {
+            foreach($request->file('media') as $file) {
+                $upload = $file->storeAs('medias', $file->getClientOriginalName());
+                Media::query()->where('path', $upload)->delete();
+                $type = $file->getClientMimeType();
 
-            $media = new Media;
-            $media->path = $upload;
-            $media->type = $type;
-            $media->format = $type;
-            $media->size = $file->getSize();
-            $media->save();
+                $media = new Media;
+                $media->path = $upload;
+                $media->type = $type;
+                $media->format = $type;
+                $media->size = $file->getSize();
+                $media->save();
+            }
         }
 
 
