@@ -38,8 +38,10 @@
                             </a>
                             </center>
                             <p class="post-meta">Posted by
-                            <a href="#">{{ $item->name }}</a>
-                            on {{ \Carbon\Carbon::parse($item->created_at)->format('F j, Y') }}</p>
+                                <a href="#">{{ $item->name }}</a>
+                                on {{ \Carbon\Carbon::parse($item->created_at)->format('F j, Y') }}
+                                <a href="{{ route('homepage.post', [$item->type, $item->pointer]) }}#disqus_thread" title="{{ $item->title }}">
+                            </p>
                         </div>
                         <hr>
                     @endforeach

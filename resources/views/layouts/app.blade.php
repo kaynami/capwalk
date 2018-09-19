@@ -108,7 +108,9 @@
         <script src="/js/app.js"></script>
 
         <!-- Custom scripts for this template -->
+        <script id="dsq-count-scr" src="//singkongbutas-com.disqus.com/count.js" async></script>
         <script src="/cleanblog/js/clean-blog.min.js"></script>
         <script type="text/javascript"> var infolinks_pid = 3123910; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-</body>
+        @yield('scripts')
+    </body>
 </html>
