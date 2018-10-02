@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Post;
 
 class HomeController extends Controller
@@ -15,22 +14,20 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = DB::table('posts')
-        ->select('posts.*', 'users.name as name', 'categories.type')
-        ->where('status', 1);
+        $posts = Post::select('posts.*', 'users.name as name', 'categories.type')
+                     ->where('status', 1);
 
         if ($request->get('cat')) {
             $posts = $posts->where('posts.category_id', $request->get('cat'));
         }
         if ($request->get('keyword')) {
-            $posts = $posts->whereRaw('UPPER( posts.title ) LIKE \'%'.strtoupper($request->get('keyword').'%\''));
+            $posts = $posts->whereRaw('UPPER( posts.title ) LIKE \'%' . strtoupper($request->get('keyword') . '%\''));
         }
 
         $posts = $posts->join('users', 'users.id', '=', 'posts.user_id')
-        ->join('categories', 'categories.id', '=', 'posts.category_id')
-        ->orderBy('created_at', 'desc')
-        ->paginate(8);
-
+                       ->join('categories', 'categories.id', '=', 'posts.category_id')
+                       ->orderBy('created_at', 'desc')
+                       ->paginate(8);
 
         return view('home', compact('posts'));
     }
@@ -47,29 +44,26 @@ class HomeController extends Controller
 
     public function post($category, $pointer)
     {
-        $post = DB::table('posts')
-        ->select('posts.*', 'users.name as name')
-        ->join('categories', 'categories.id', '=', 'posts.category_id')
-        ->join('users', 'users.id', '=', 'posts.user_id')
-        ->where('status', 1)
-        ->where('posts.pointer', 'LIKE', $pointer)
-        ->where('categories.type', 'LIKE', $category)
-        ->get()[0];
+        $post = Post::select('posts.*', 'users.name as name')
+                    ->join('categories', 'categories.id', '=', 'posts.category_id')
+                    ->join('users', 'users.id', '=', 'posts.user_id')
+                    ->where('status', 1)
+                    ->where('posts.pointer', 'LIKE', $pointer)
+                    ->where('categories.type', 'LIKE', $category)
+                    ->get()[0];
 
         return view('post', compact('post'));
     }
 
     public function filter($category)
     {
-        $posts = DB::table('posts')
-        ->select('posts.*', 'users.name as name', 'categories.type')
-        ->where('status', 1)
-        ->where('categories.type', 'LIKE', $category)
-        ->join('users', 'users.id', '=', 'posts.user_id')
-        ->join('categories', 'categories.id', '=', 'posts.category_id')
-        ->orderBy('created_at', 'desc')
-        ->paginate(8);
-
+        $posts = Post::select('posts.*', 'users.name as name', 'categories.type')
+                     ->where('status', 1)
+                     ->where('categories.type', 'LIKE', $category)
+                     ->join('users', 'users.id', '=', 'posts.user_id')
+                     ->join('categories', 'categories.id', '=', 'posts.category_id')
+                     ->orderBy('created_at', 'desc')
+                     ->paginate(8);
 
         return view('home', compact('posts'));
     }
